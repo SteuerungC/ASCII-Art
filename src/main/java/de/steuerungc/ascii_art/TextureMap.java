@@ -10,12 +10,12 @@ public class TextureMap {
     public static void setTextureMap() {
         textures = new HashMap<>();
 
-        textures.put(0f,   '0');
-        textures.put(0.2f, '1');
-        textures.put(0.4f, '2');
-        textures.put(0.6f, '3');
-        textures.put(0.8f, '4');
-        textures.put(1f,   '5');
+        textures.put(0f,   '@');
+        textures.put(0.2f, '#');
+        textures.put(0.4f, '&');
+        textures.put(0.6f, '%');
+        textures.put(0.8f, '+');
+        textures.put(1f,   ' ');
     }
 
     public static char getTexture(float grey) {
