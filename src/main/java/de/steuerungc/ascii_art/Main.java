@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main (String[] args) throws IOException {
-            File file = new File("H:\\uw.jpg");
+            File file = new File("C:\\Users\\Bjarne\\Desktop\\a.png");
             new Worker(file, "");
     }
 }
