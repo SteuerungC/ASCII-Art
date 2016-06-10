@@ -1,5 +1,7 @@
 from PIL import Image
+from PIL import ImageFilter
 import sys
+import os
 
 def avg(array, multi=True):
     return sum(array)/len(array)
@@ -12,6 +14,11 @@ else:
     multicolor = False
     
 image = Image.open(image_file)
+if sys.argv[3] == "c":
+    image = image.filter(ImageFilter.EDGE_ENHANCE)
+    image = image.filter(ImageFilter.SHARPEN)
+else:
+    pass
 pix = image.load()
 
 for y in range(image.height):
