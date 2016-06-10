@@ -17,7 +17,7 @@ public class FileHandler {
     }
 
     private String read() {
-        open.setDialogTitle("Bild laden");
+        open.setDialogTitle("Select picture");
         open.setFileFilter(new FileNameExtensionFilter("JPG-Bild", "jpg"));
         if (open.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             open.setVisible(true);
@@ -40,7 +40,7 @@ public class FileHandler {
     }
 
     private String write() {
-        save.setDialogTitle("Erstelltes Bild sichern");
+        save.setDialogTitle("Save generated picture");
         save.setFileFilter(new FileNameExtensionFilter("JPG-Bild", "jpg"));
         if (save.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             save.setVisible(true);

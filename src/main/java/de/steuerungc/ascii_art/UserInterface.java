@@ -9,10 +9,10 @@ import java.awt.*;
 public class UserInterface extends JFrame {
 
     @Getter
-    private JButton start     = new JButton("Bild wählen");
+    private JButton start     = new JButton("Select picture");
 
     @Getter
-    private JLabel log        = new JLabel("Wähle ein JPG-Bild aus.");
+    private JLabel log        = new JLabel("Select a JPG-image to start");
 
 
     public UserInterface(Handler handler) {
@@ -26,7 +26,7 @@ public class UserInterface extends JFrame {
         this.add(log);
         this.add(start);
 
-        this.setSize(200, 100);
+        this.setSize(250, 100);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

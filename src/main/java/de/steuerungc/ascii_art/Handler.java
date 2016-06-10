@@ -38,38 +38,40 @@ public class Handler implements ActionListener {
                     trans = Worker.build(bfi);
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                    gui.getLog().setText("Bild konnte nicht geladen werden.");
+                    gui.getLog().setText("Unable to load picture.");
                     return;
                 }
 
                 try {
                     bfi = Worker.render(trans, height*16, width*15);
                 } catch (Exception ex) {
-                    gui.getLog().setText("Bild konnte nicht gerendert werden.");
+                    ex.printStackTrace();
+                    gui.getLog().setText("Unable to render picture,");
                     return;
                 }
 
-                gui.getLog().setText("Bild geladen. Jetzt Speichern?");
-                gui.getStart().setText("Bild speichern");
+                gui.getLog().setText("Picture rendered. Save now?");
+                gui.getStart().setText("Save picture");
                 step = 1;
                 break;
             case 1: // Picture loaded
                 try {
                     if (bfi == null) {
                         step = 0;
-                        gui.getLog().setText("Fehler beim Laden.");
+                        gui.getLog().setText("Failed to load ... mysterious :(");
 
                         return;
                     }
                     fh.savePicture(bfi);
                 } catch (Exception ex) {
-                    gui.getLog().setText("Speicherfehler.");
-                    gui.getStart().setText("Bild auswählen");
+                    ex.printStackTrace();
+                    gui.getLog().setText("Unable to save. Try it again ...");
+                    gui.getStart().setText("Select picture");
                     step = 0;
                     return;
                 }
-                gui.getLog().setText("Bild gesichert!");
-                gui.getStart().setText("Bild auswählen");
+                gui.getLog().setText("Picture saved successfully!");
+                gui.getStart().setText("Select picture");
                 step = 0;
                 break;
             default:
