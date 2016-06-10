@@ -14,6 +14,7 @@ public class Handler implements ActionListener {
     private UserInterface gui;
     private FileHandler   fh;
     private BufferedImage bfi = null;
+
     private int width, height;
 
     @Getter
@@ -27,15 +28,16 @@ public class Handler implements ActionListener {
 
     public void actionPerformed (ActionEvent ae) {
         switch (step) {
-            case 0: // Loading picture
+            case 0:
                 String trans;
-
+                gui.getLog().setText("Loading ... please wait!");
+                gui.getBox().setEnabled(false);
                 try {
                     BufferedImage bfi = ImageIO.read(fh.loadPicture());
                     width = bfi.getWidth();
                     height = bfi.getHeight();
 
-                    trans = Worker.build(bfi);
+                    trans = Worker.build(bfi, gui.getBox().isSelected());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     gui.getLog().setText("Unable to load picture.");
@@ -43,7 +45,7 @@ public class Handler implements ActionListener {
                 }
 
                 try {
-                    bfi = Worker.render(trans, height*16, width*15);
+                    bfi = Worker.render(trans, height*16, width*14, gui.getBox().isSelected());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     gui.getLog().setText("Unable to render picture,");
@@ -54,7 +56,7 @@ public class Handler implements ActionListener {
                 gui.getStart().setText("Save picture");
                 step = 1;
                 break;
-            case 1: // Picture loaded
+            case 1:
                 try {
                     if (bfi == null) {
                         step = 0;
@@ -70,6 +72,7 @@ public class Handler implements ActionListener {
                     step = 0;
                     return;
                 }
+                gui.getBox().setEnabled(true);
                 gui.getLog().setText("Picture saved successfully!");
                 gui.getStart().setText("Select picture");
                 step = 0;

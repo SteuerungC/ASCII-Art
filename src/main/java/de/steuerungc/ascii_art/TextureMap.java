@@ -22,8 +22,12 @@ public class TextureMap {
         textures.put(1f,   ' ');
     }
 
-    public static char getTexture(float gray) {
-        float grey = 1f - gray;
+    public static char getTexture(float grey, boolean inverted) {
+
+        if (!inverted) {
+            grey = 1f - grey;
+        }
+
         if (grey < 0.1f)                       return textures.get(0f);
         else if (grey >= 0.1f && grey < 0.2f)  return textures.get(0.1f);
         else if (grey >= 0.2f && grey < 0.3f)  return textures.get(0.2f);

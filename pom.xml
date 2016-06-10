@@ -4,7 +4,7 @@
 	<groupId>de.steuerungc</groupId>
 	<artifactId>ascii_art</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.1</version>
 	<name>ASCII Art</name>
 	<url>http://steuerungc.de</url>
 
@@ -45,7 +45,7 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-					<finalName>${project.artifactId}-1.0</finalName>
+					<finalName>${project.artifactId}-${project.version}</finalName>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
